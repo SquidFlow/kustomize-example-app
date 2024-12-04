@@ -8,6 +8,25 @@
   - Number of replicas
   - Other environment-specific parameters
 
+## Template Usage
+
+```shell
+# Build and preview the resources for SIT environment
+kustomize build overlays/sit
+
+# Build and preview the resources for UAT environment
+kustomize build overlays/uat
+
+# Build and directly apply to kubernetes cluster
+kustomize build overlays/sit | kubectl apply -f -
+
+# Build and validate the output without applying
+kustomize build overlays/sit | kubectl apply -f - --dry-run=client
+
+# View differences before applying
+kustomize build overlays/sit | kubectl diff -f -
+```
+
 ## Important Notes
 
 1. Ensure kubectl is installed and properly configured
